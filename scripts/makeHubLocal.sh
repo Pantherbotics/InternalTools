@@ -1,4 +1,5 @@
 #!/bin/bash
+cred=$(</robotics/gitCred.txt)
 mkdir /robotics/git/$@
 cd /robotics/git/$@
 git init --bare --shared=true
@@ -7,7 +8,7 @@ touch no-github-sync
 echo "Creating remote:" $@
 echo '{"name":"'$@'"}'
 echo 'setting hub'
-git remote add hub https://pantherbotics3863:3863nphs@github.com/Pantherbotics/$@
+git remote add hub https://$cred@github.com/Pantherbotics/$@
 cd ../
 chmod -R 777 $@
 

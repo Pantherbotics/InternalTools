@@ -3,6 +3,5 @@
 #parsed by initSymlink.sh
 #THIS FILE MUST END WITH A NEWLINE
 
-/robotics/scripts/syncGit.sh gitScripts/syncGit.sh
-/robotics/services/pvcs pvcs/
-
+/robotics/services/InternalTools/scripts /robotics
+/robotics/services/InternalTools/pvcs /robotics/services

@@ -1,6 +1,9 @@
 #!/bin/bash
 while read p; do
+  if [[ $p == "#"* ]] || ! [[ $p == "/"* ]];
+  then
+    continue;
+  fi
   echo $p
-  if [[ $p == #* ]]; then
-    echo "  -ignore"
+
 done <symlinks.txt

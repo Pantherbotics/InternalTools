@@ -1,6 +1,8 @@
 #List of symlinks to create. 
 #Comments are ignored (#)
 #parsed by initSymlink.sh
+#THIS FILE MUST END WITH A NEWLINE
 
 /robotics/scripts/syncGit.sh gitScripts/syncGit.sh
 /robotics/services/pvcs pvcs/
+

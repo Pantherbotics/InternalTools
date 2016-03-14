@@ -1,0 +1,6 @@
+#List of symlinks to create. 
+#Comments are ignored (#)
+#parsed by initSymlink.sh
+
+/robotics/scripts/syncGit.sh gitScripts/syncGit.sh
+/robotics/services/pvcs pvcs/

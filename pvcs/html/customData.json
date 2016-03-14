@@ -1,0 +1,27 @@
+{
+  "vex2016.git": {
+
+    "date": "Sat Jan  9 15:09:14 2016",
+    "path": "/robotics/git/vex2016.git",
+    "link": "git@server:/opt/git/vex2016.git"
+  },
+
+  "FRC2016_Stronghold.git": {
+
+    "date": "Mon Feb 22 20:13:42 2016",
+    "path": "/robotics/git/FRC2016_Stronghold.git",
+    "link": "git@server:/opt/git/FRC2016_Stronghold.git"
+  },
+
+  "FRC2015_Code.git": {
+
+    "date": "Sat Jan  9 15:13:33 2016",
+    "path": "/robotics/git/FRC2015_Code.git",
+    "link": "git@server:/opt/git/FRC2015_Code.git"
+  }, 
+
+  "__data": {
+    "ip": "offline-localhost"
+  }
+
+}

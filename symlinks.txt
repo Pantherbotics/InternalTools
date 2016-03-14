@@ -1,0 +1,7 @@
+#List of symlinks to create. 
+#Comments are ignored (#)
+#parsed by initSymlink.sh
+#THIS FILE MUST END WITH A NEWLINE
+
+/robotics/services/InternalTools/scripts /robotics
+/robotics/services/InternalTools/pvcs /robotics/services

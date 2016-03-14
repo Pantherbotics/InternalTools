@@ -1,9 +1,9 @@
 #!/bin/bash
 while read p; do
-  if [[ $p == "#"* ]] || ! [[ $p == "/"* ]];
+  if [[ $p == "#"* ]] || [[ $p == "" ]];
   then
     continue;
   fi
-  echo $p
+  ln -s $p
 
 done <symlinks.txt

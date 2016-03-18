@@ -92,7 +92,7 @@ def reloadFileList():
     fileData = {'__data': {'ip':'Null'}}
     for f in os.listdir(GIT_DIR):
         if not f.endswith('.git'): continue
-        if os.path.isfile(GIT_DIR+f+'/no-github-sync'): state = 'Private'
+        if os.path.isfile(GIT_DIR+f+'/no-github-sync'): state = 'Local'
         else: state = 'Public'
         date = time.ctime(os.path.getmtime(GIT_DIR+f+'/git-daemon-export-ok'))
         ip = commands.getoutput("/sbin/ifconfig").split("\n")[1].split()[1][5:]

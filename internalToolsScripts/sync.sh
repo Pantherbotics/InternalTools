@@ -1,2 +1,4 @@
 #!/bin/bash
-#This will update the internal production branch with the master branch
+cd /robotics/services/InternalTools
+git checkout production
+git pull origin develop

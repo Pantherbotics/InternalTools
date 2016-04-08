@@ -32,6 +32,9 @@ html, body {
 p, .items {
   font-size: 20px; }
 
+.outline > div {
+  border: 1px solid black; }
+
 .items > div {
   text-align: center; }
 
@@ -61,7 +64,8 @@ img {
   float: left;
   padding: 1em;
   width: 100%;
-  min-height: 1px; }
+  min-height: 1px;
+  height: 100%; }
 
 @media only screen and (min-width: 30em) {
   .wrapper {

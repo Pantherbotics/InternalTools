@@ -61,7 +61,11 @@ p, .items {
 	font-size: 20px;
 }
 
-.items > div{
+.outline > div {
+	border: 1px solid black;
+}
+
+.items > div {
 	text-align: center;
 }
 
@@ -102,6 +106,7 @@ img {
     padding: 1em;
     width: 100%;
     min-height: 1px; 
+    height: 100%;
 }   
  
 @media #{$breakpoint-medium} {
@@ -111,7 +116,7 @@ img {
     }
     @for $i from 1 through $grid-columns {      
         .column-#{$i} {         
-            width: 100% / $grid-columns * $i;   
+            width: 100% / $grid-columns * $i;
         }           
     }   
 }

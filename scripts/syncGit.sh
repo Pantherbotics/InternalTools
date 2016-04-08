@@ -16,9 +16,9 @@ for D in $(find /robotics/git/ -mindepth 1 -maxdepth 1 -type d) ; do
     if ! [[ $(git show-ref refs/heads/master) ]] && test `find "git-daemon-export-ok" -mmin +4320`; then
         echo 'Repository is older than 3 days and is blank. DELETING PERMANENTLY' >> /robotics/logs/gitSync 
         cd ../
-        mv $D /robotics/oldGit/$D
         N=${D/\/*\//};
-        curl -u "@cred" -X "DELETE" https://api.github.com/repos/PantherboticsOrg/${N/.*/}; 
+        mv $D /robotics/oldGit/${N/.*/}
+        curl -u @cred -X "DELETE" https://api.github.com/repos/PantherboticsOrg/${N/.*/}; 
     else
         OUTF=$((git fetch hub refs/heads/*:refs/heads/*) 2>&1)
         OUTP=$((git push --all hub) 2>&1)

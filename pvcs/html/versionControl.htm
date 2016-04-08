@@ -10,78 +10,75 @@
     </head>
     <body>
         <div id="content">
-            <div class="wrapper">
-                <div class="header">
-                    <h1>
-                        Pantherbotics Version Control Server
-                    </h1>
-                    <h2>
-                        Git Repositories
-                    </h2>
-                    <p id="info">
-                    </p>
-                </div>
-
-                <p>Our Github organization for offline code editing can be found at <a href="https://github.com/pantherbotics">https://github.com/Pantherbotics/</a></p>
-                <br />
-                <p>
-                    The PVCS (Pantherbotics Version Control System) is a web-based graphical frontend for the all-powerful <i>git</i>, a very well-known piece of version control software. 
-                    <br />
-                    <br />
-                    Use this webpage to create a new  repository and view existing ones. 
-                    <br />
-                    If a repository is created on Github first, and you want it on the local server, create a new local repo
-                    with the same name (Capitalization Counts!) as the one on Gihub, and then manually re-synchronize the repos. 
-                    <br />The commits should copy over. 
+            <div class="header">
+                <a href="index.htm"><h1>
+                    Pantherbotics Version Control Server
+                </h1></a>
+                <h2>
+                    Git Repositories
+                </h2>
+                <p class="info info-top">
                 </p>
-                <br />
-                <p><b> WARNING: </b> Blank Repositories that have been created but never committed to will be permanently deleted after three days!!!
-                    Ask Roger, Josh, or anyone else with server access if you need a repository deleted manually.
-                </p>
-
-                <br />
-                <div class="row items">
-                    <div class="column-4">
-                        <font face="verdana" size="3" style="margin:5px;"><b>Create New Repo:</b></font>
-                        <form method="POST" action="newRepo" style="margin:5px;">
-                            Name:
-                            <input type="text" name="name" placeholder="New Repo Name" style="margin:5px;" /><br>
-                            <input type="radio" name="public" value="true"> Public Repo (Internal Server AND Github)<br>
-                            <input type="radio" name="public" value="false" checked> Local Repo (Internal Server ONLY)<br>
-                            <input type="submit" value="Create Repo" style="margin:5px;" />
-                        </form>
-                    </div>
-                    <div class="column-4">
-                        <font face="verdana" size="3" style="margin:5px;"><b>Manually Re-synchronize with Github:</b></font>
-                        <form method="POST" action="resync" style="margin:5px;" align="center">
-                            <input type="submit"  value="Resync" style="margin:5px;">
-                            <br><b>Note:</b> This may take a while to complete, expect the page to lock up for up to 30 seconds.
-                        </form>
-                    </div>
-                    <div class="column-4">
-                        <font face="verdana" size="3" style="margin:5px;"><b>Change username on displayed URLs:</b></font>       
-                        <div style="margin-left:5px;">
-                            Name:
-                            <input type="text" id='nameChange' placeholder="git" style="margin:5px;">
-                        </div>
-                        <div style="margin-left:5px;">
-                            Submit temporary change:
-                            <input type="submit" id='nameSubmit' value="Change User" style="margin:5px;">
-                        </div>
-                    </div>
-                </div>            
-                <br />
-                <script src="getData.js"></script>
-                <table style="width:99%; margin:5px; border:1px; border-style:solid; border-color:#000000" id="repos" align="center">
-                    <tr>
-                        <td><strong>Repo Name</strong></td>
-                        <td><strong>Full Path</strong></td>
-                        <td><strong>Public/Local</strong></td>
-                        <td><strong>Date Created</strong></td>
-                        <td><strong>SSH Link</strong></td>
-                    </tr>
-                </table>
             </div>
+
+            <p>Our Github organization for offline code editing can be found at <a href="https://github.com/pantherbotics">https://github.com/Pantherbotics/</a></p>
+            <br />
+            <p>
+                The PVCS (Pantherbotics Version Control System) is a web-based graphical frontend for the all-powerful <i>git</i>, a very well-known piece of version control software. 
+                <br />
+                <br />
+                Use this webpage to create a new  repository and view existing ones. 
+                <br />
+                If a repository is created on Github first, and you want it on the local server, create a new local repo
+                with the same name (Capitalization Counts!) as the one on Gihub, and then manually re-synchronize the repos. 
+                <br />The commits should copy over. 
+            </p>
+            <br />
+            <p><b> WARNING: </b> Blank Repositories that have been created but never committed to will be permanently deleted after three days!!!
+                Ask Roger, Josh, or anyone else with server access if you need a repository deleted manually.
+            </p>
+
+            <br />
+            <div class="row items outline center">
+                <div class="column-md-4">
+                    <font face="verdana" size="3" style="margin:5px;"><b>Create New Repo:</b></font>
+                    <form method="POST" action="newRepo" style="margin:5px;">
+                        Name:
+                        <input type="text" name="name" placeholder="New Repo Name" style="margin:5px;" /><br>
+                        <input type="radio" name="public" value="true"> Public Repo (Internal Server AND Github)<br>
+                        <input type="radio" name="public" value="false" checked> Local Repo (Internal Server ONLY)<br>
+                        <input type="submit" value="Create Repo" style="margin:5px;" />
+                    </form>
+                </div>
+                <div class="column-md-4">
+                    <font face="verdana" size="3" style="margin:5px;"><b>Manually Re-synchronize with Github:</b></font>
+                    <form method="POST" action="resync" style="margin:5px;" align="center">
+                        <input type="submit"  value="Resync" style="margin:5px;">
+                        <br><b>Note:</b> This may take a while to complete, expect the page to lock up for up to 30 seconds.
+                    </form>
+                </div>
+                <div class="column-md-4">
+                    <font face="verdana" size="3" style="margin:5px;"><b>Change username on displayed URLs:</b></font>       
+                    <div style="margin-left:5px;">
+                        Name:
+                        <input type="text" id='nameChange' placeholder="git" style="margin:5px;">
+                    </div>
+                    <div style="margin-left:5px;">
+                        <input type="submit" id='nameSubmit' value="Temp. Change User" style="margin:5px;">
+                    </div>
+                </div>
+            </div>            
+            <br />
+            <script src="getData.js"></script>
+            <table id="repos" align="center">
+                <tr>
+                    <th>Repo Name</th>
+                    <th>Full Path</th>
+                    <th>Public/Local</th>
+                    <th>Date Created</th>
+                    <th>SSH Link</th>
+                </tr>
+            </table>
         </div>
     </body>
 </html>

@@ -1,11 +1,15 @@
-.wrapper, .row {
-  *zoom: 1; }
-  .wrapper:before, .row:before, .wrapper:after, .row:after {
-    content: " ";
-    display: table; }
-  .wrapper:after, .row:after {
-    clear: both; }
-
+/**
+ * Grid setup
+ *
+ * The grid will calculate dimensions based on these two variables:
+ * $fg-columns will inform the grid loops how many columns there should be.
+ * $fg-gutter will inform the grid loops how big eac column's gutters should be.
+ *
+ * The grid will name columns, rows, offsets based on these three variables:
+ * $fg-class-row string used for the row class
+ * $fg-class-col string used for the column class
+ * $fg-class-off string used for the offset class
+ */
 *, *:after, *:before {
   margin: 0;
   padding: 0;
@@ -20,13 +24,18 @@ html, body {
 
 .header {
   text-align: center; }
+  .header a {
+    text-decoration: none; }
+    .header a h1:hover {
+      color: #ccac00; }
   .header h1 {
     color: #e5c100;
     font-size: 4em; }
   .header h2 {
     font-size: 2em; }
-  .header #info {
-    padding-top: 20px;
+  .header .info.info-top {
+    padding-top: 20px; }
+  .header .info.info-bottom {
     padding-bottom: 60px; }
 
 p, .items {
@@ -35,13 +44,26 @@ p, .items {
 .outline > div {
   border: 1px solid black; }
 
-.items > div {
+.left {
+  text-align: left; }
+
+.center {
   text-align: center; }
+
+.right {
+  text-align: right; }
+
+.items > div {
+  padding: 20px 20px; }
 
 #content {
   min-height: 100%;
   /* equal to footer height */
-  margin-bottom: -50px; }
+  margin-bottom: -50px;
+  width: 95%;
+  max-width: 90em;
+  margin-right: auto;
+  margin-left: auto; }
   #content:after {
     content: "";
     display: block; }
@@ -56,57 +78,6 @@ img {
   max-width: 100%;
   height: auto !important; }
 
-.wrapper {
-  width: 100%;
-  margin: 0 auto; }
-
-[class*='column-'] {
-  float: left;
-  padding: 1em;
-  width: 100%;
-  min-height: 1px;
-  height: 100%; }
-
-@media only screen and (min-width: 30em) {
-  .wrapper {
-    width: 95%;
-    max-width: 90em; }
-
-  .column-1 {
-    width: 8.33333%; }
-
-  .column-2 {
-    width: 16.66667%; }
-
-  .column-3 {
-    width: 25%; }
-
-  .column-4 {
-    width: 33.33333%; }
-
-  .column-5 {
-    width: 41.66667%; }
-
-  .column-6 {
-    width: 50%; }
-
-  .column-7 {
-    width: 58.33333%; }
-
-  .column-8 {
-    width: 66.66667%; }
-
-  .column-9 {
-    width: 75%; }
-
-  .column-10 {
-    width: 83.33333%; }
-
-  .column-11 {
-    width: 91.66667%; }
-
-  .column-12 {
-    width: 100%; } }
 input[type="submit"] {
   padding: 10px;
   border-radius: 5px;
@@ -117,5 +88,401 @@ input[type="submit"] {
 input[type="text"] {
   padding: 10px;
   font-size: 1em; }
+
+#repos {
+  width: 100%;
+  border-collapse: collapse; }
+  #repos, #repos td, #repos th {
+    border: 1px solid #000000;
+    padding: 5px; }
+
+/**
+ * Break point namespace object
+ *
+ * Set the default namespace object with these defaults with the
+ * understanding that you can pass in whatever you might require for your site.
+ *
+ * $fg-breakpoints is a Sass list with nested lists inside. Each sub list defines two things.
+ * 1. The namespace for that breakpoint. (Required) (i.e. xs, sm, md, lg)
+ * 2. The min-width measurement for the breakpoint for that namespace. (i.e. 48em, 62em, 75em)
+ *
+ * Note: These should be in the proper order (at least till libsass handles map keys properly).
+ *
+ * Note: If the measurement is left out then it will be skipped when generating
+ * the grid and applied to global styles.
+ *
+ */
+/**
+ * Class Name Defaults
+ *
+ * Define class names for columns, rows and offsets in case compatibility with other
+ * libraries is necessary.
+/**
+ * Calculate column size percentage
+ */
+/**
+ * Spacing mixin to create uniform margin/padding
+ */
+/**
+ * Row wrapper class, flex box parent.
+ */
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem; }
+
+.column-xs, .column-sm, .column-md, .column-lg, .column-xs-1, .column-xs-2, .column-xs-3, .column-xs-4, .column-xs-5, .column-xs-6, .column-xs-7, .column-xs-8, .column-xs-9, .column-xs-10, .column-xs-11, .column-xs-12, .column-sm-1, .column-sm-2, .column-sm-3, .column-sm-4, .column-sm-5, .column-sm-6, .column-sm-7, .column-sm-8, .column-sm-9, .column-sm-10, .column-sm-11, .column-sm-12, .column-md-1, .column-md-2, .column-md-3, .column-md-4, .column-md-5, .column-md-6, .column-md-7, .column-md-8, .column-md-9, .column-md-10, .column-md-11, .column-md-12, .column-lg-1, .column-lg-2, .column-lg-3, .column-lg-4, .column-lg-5, .column-lg-6, .column-lg-7, .column-lg-8, .column-lg-9, .column-lg-10, .column-lg-11, .column-lg-12 {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem; }
+
+.column-xs, .column-sm, .column-md, .column-lg {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%; }
+
+/**
+ * Generate a set of grid column classes using a namespace
+ *
+ * .column-[namespace] for intelligent column division
+ * .column-[namespace]-[number] for a column that covers a specific number of columns (e.g. 1-12 by default)
+ * .off-[namespace]-[number] for pushing a col a specific number of columns (e.g. 1-11 by default)
+ */
+/**
+ * Build the grid in two steps, to help minimize file size
+ * Step 1, for each namespace, create the grid-base
+ * Step 2, for each namespace, wrap the col width/offset measurements in their breakpoint media query
+ */
+.column-xs-1 {
+  flex-basis: 8.33333%;
+  max-width: 8.33333%; }
+
+.column-xs-2 {
+  flex-basis: 16.66667%;
+  max-width: 16.66667%; }
+
+.column-xs-3 {
+  flex-basis: 25%;
+  max-width: 25%; }
+
+.column-xs-4 {
+  flex-basis: 33.33333%;
+  max-width: 33.33333%; }
+
+.column-xs-5 {
+  flex-basis: 41.66667%;
+  max-width: 41.66667%; }
+
+.column-xs-6 {
+  flex-basis: 50%;
+  max-width: 50%; }
+
+.column-xs-7 {
+  flex-basis: 58.33333%;
+  max-width: 58.33333%; }
+
+.column-xs-8 {
+  flex-basis: 66.66667%;
+  max-width: 66.66667%; }
+
+.column-xs-9 {
+  flex-basis: 75%;
+  max-width: 75%; }
+
+.column-xs-10 {
+  flex-basis: 83.33333%;
+  max-width: 83.33333%; }
+
+.column-xs-11 {
+  flex-basis: 91.66667%;
+  max-width: 91.66667%; }
+
+.column-xs-12 {
+  flex-basis: 100%;
+  max-width: 100%; }
+
+.off-xs-1 {
+  margin-left: 8.33333%; }
+
+.off-xs-2 {
+  margin-left: 16.66667%; }
+
+.off-xs-3 {
+  margin-left: 25%; }
+
+.off-xs-4 {
+  margin-left: 33.33333%; }
+
+.off-xs-5 {
+  margin-left: 41.66667%; }
+
+.off-xs-6 {
+  margin-left: 50%; }
+
+.off-xs-7 {
+  margin-left: 58.33333%; }
+
+.off-xs-8 {
+  margin-left: 66.66667%; }
+
+.off-xs-9 {
+  margin-left: 75%; }
+
+.off-xs-10 {
+  margin-left: 83.33333%; }
+
+.off-xs-11 {
+  margin-left: 91.66667%; }
+
+@media only screen and (min-width: 768px) {
+  .column-sm-1 {
+    flex-basis: 8.33333%;
+    max-width: 8.33333%; }
+
+  .column-sm-2 {
+    flex-basis: 16.66667%;
+    max-width: 16.66667%; }
+
+  .column-sm-3 {
+    flex-basis: 25%;
+    max-width: 25%; }
+
+  .column-sm-4 {
+    flex-basis: 33.33333%;
+    max-width: 33.33333%; }
+
+  .column-sm-5 {
+    flex-basis: 41.66667%;
+    max-width: 41.66667%; }
+
+  .column-sm-6 {
+    flex-basis: 50%;
+    max-width: 50%; }
+
+  .column-sm-7 {
+    flex-basis: 58.33333%;
+    max-width: 58.33333%; }
+
+  .column-sm-8 {
+    flex-basis: 66.66667%;
+    max-width: 66.66667%; }
+
+  .column-sm-9 {
+    flex-basis: 75%;
+    max-width: 75%; }
+
+  .column-sm-10 {
+    flex-basis: 83.33333%;
+    max-width: 83.33333%; }
+
+  .column-sm-11 {
+    flex-basis: 91.66667%;
+    max-width: 91.66667%; }
+
+  .column-sm-12 {
+    flex-basis: 100%;
+    max-width: 100%; }
+
+  .off-sm-1 {
+    margin-left: 8.33333%; }
+
+  .off-sm-2 {
+    margin-left: 16.66667%; }
+
+  .off-sm-3 {
+    margin-left: 25%; }
+
+  .off-sm-4 {
+    margin-left: 33.33333%; }
+
+  .off-sm-5 {
+    margin-left: 41.66667%; }
+
+  .off-sm-6 {
+    margin-left: 50%; }
+
+  .off-sm-7 {
+    margin-left: 58.33333%; }
+
+  .off-sm-8 {
+    margin-left: 66.66667%; }
+
+  .off-sm-9 {
+    margin-left: 75%; }
+
+  .off-sm-10 {
+    margin-left: 83.33333%; }
+
+  .off-sm-11 {
+    margin-left: 91.66667%; } }
+@media only screen and (min-width: 992px) {
+  .column-md-1 {
+    flex-basis: 8.33333%;
+    max-width: 8.33333%; }
+
+  .column-md-2 {
+    flex-basis: 16.66667%;
+    max-width: 16.66667%; }
+
+  .column-md-3 {
+    flex-basis: 25%;
+    max-width: 25%; }
+
+  .column-md-4 {
+    flex-basis: 33.33333%;
+    max-width: 33.33333%; }
+
+  .column-md-5 {
+    flex-basis: 41.66667%;
+    max-width: 41.66667%; }
+
+  .column-md-6 {
+    flex-basis: 50%;
+    max-width: 50%; }
+
+  .column-md-7 {
+    flex-basis: 58.33333%;
+    max-width: 58.33333%; }
+
+  .column-md-8 {
+    flex-basis: 66.66667%;
+    max-width: 66.66667%; }
+
+  .column-md-9 {
+    flex-basis: 75%;
+    max-width: 75%; }
+
+  .column-md-10 {
+    flex-basis: 83.33333%;
+    max-width: 83.33333%; }
+
+  .column-md-11 {
+    flex-basis: 91.66667%;
+    max-width: 91.66667%; }
+
+  .column-md-12 {
+    flex-basis: 100%;
+    max-width: 100%; }
+
+  .off-md-1 {
+    margin-left: 8.33333%; }
+
+  .off-md-2 {
+    margin-left: 16.66667%; }
+
+  .off-md-3 {
+    margin-left: 25%; }
+
+  .off-md-4 {
+    margin-left: 33.33333%; }
+
+  .off-md-5 {
+    margin-left: 41.66667%; }
+
+  .off-md-6 {
+    margin-left: 50%; }
+
+  .off-md-7 {
+    margin-left: 58.33333%; }
+
+  .off-md-8 {
+    margin-left: 66.66667%; }
+
+  .off-md-9 {
+    margin-left: 75%; }
+
+  .off-md-10 {
+    margin-left: 83.33333%; }
+
+  .off-md-11 {
+    margin-left: 91.66667%; } }
+@media only screen and (min-width: 1200px) {
+  .column-lg-1 {
+    flex-basis: 8.33333%;
+    max-width: 8.33333%; }
+
+  .column-lg-2 {
+    flex-basis: 16.66667%;
+    max-width: 16.66667%; }
+
+  .column-lg-3 {
+    flex-basis: 25%;
+    max-width: 25%; }
+
+  .column-lg-4 {
+    flex-basis: 33.33333%;
+    max-width: 33.33333%; }
+
+  .column-lg-5 {
+    flex-basis: 41.66667%;
+    max-width: 41.66667%; }
+
+  .column-lg-6 {
+    flex-basis: 50%;
+    max-width: 50%; }
+
+  .column-lg-7 {
+    flex-basis: 58.33333%;
+    max-width: 58.33333%; }
+
+  .column-lg-8 {
+    flex-basis: 66.66667%;
+    max-width: 66.66667%; }
+
+  .column-lg-9 {
+    flex-basis: 75%;
+    max-width: 75%; }
+
+  .column-lg-10 {
+    flex-basis: 83.33333%;
+    max-width: 83.33333%; }
+
+  .column-lg-11 {
+    flex-basis: 91.66667%;
+    max-width: 91.66667%; }
+
+  .column-lg-12 {
+    flex-basis: 100%;
+    max-width: 100%; }
+
+  .off-lg-1 {
+    margin-left: 8.33333%; }
+
+  .off-lg-2 {
+    margin-left: 16.66667%; }
+
+  .off-lg-3 {
+    margin-left: 25%; }
+
+  .off-lg-4 {
+    margin-left: 33.33333%; }
+
+  .off-lg-5 {
+    margin-left: 41.66667%; }
+
+  .off-lg-6 {
+    margin-left: 50%; }
+
+  .off-lg-7 {
+    margin-left: 58.33333%; }
+
+  .off-lg-8 {
+    margin-left: 66.66667%; }
+
+  .off-lg-9 {
+    margin-left: 75%; }
+
+  .off-lg-10 {
+    margin-left: 83.33333%; }
+
+  .off-lg-11 {
+    margin-left: 91.66667%; } }
 
 /*# sourceMappingURL=master.css.map */

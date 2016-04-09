@@ -58,12 +58,11 @@ p, .items {
 
 #content {
   min-height: 100%;
-  /* equal to footer height */
-  margin-bottom: -50px;
   width: 95%;
   max-width: 90em;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto;
+  margin-bottom: -50px; }
   #content:after {
     content: "";
     display: block; }
@@ -79,14 +78,15 @@ img {
   height: auto !important; }
 
 input[type="submit"] {
-  padding: 10px;
+  padding: 2px;
   border-radius: 5px;
   font-size: 1em; }
   input[type="submit"]:hover {
     border-style: inset; }
 
 input[type="text"] {
-  padding: 10px;
+  padding: 2px;
+  border-radius: 5px;
   font-size: 1em; }
 
 #repos {
@@ -96,36 +96,6 @@ input[type="text"] {
     border: 1px solid #000000;
     padding: 5px; }
 
-/**
- * Break point namespace object
- *
- * Set the default namespace object with these defaults with the
- * understanding that you can pass in whatever you might require for your site.
- *
- * $fg-breakpoints is a Sass list with nested lists inside. Each sub list defines two things.
- * 1. The namespace for that breakpoint. (Required) (i.e. xs, sm, md, lg)
- * 2. The min-width measurement for the breakpoint for that namespace. (i.e. 48em, 62em, 75em)
- *
- * Note: These should be in the proper order (at least till libsass handles map keys properly).
- *
- * Note: If the measurement is left out then it will be skipped when generating
- * the grid and applied to global styles.
- *
- */
-/**
- * Class Name Defaults
- *
- * Define class names for columns, rows and offsets in case compatibility with other
- * libraries is necessary.
-/**
- * Calculate column size percentage
- */
-/**
- * Spacing mixin to create uniform margin/padding
- */
-/**
- * Row wrapper class, flex box parent.
- */
 .row {
   box-sizing: border-box;
   display: flex;
@@ -148,18 +118,6 @@ input[type="text"] {
   flex-basis: 0;
   max-width: 100%; }
 
-/**
- * Generate a set of grid column classes using a namespace
- *
- * .column-[namespace] for intelligent column division
- * .column-[namespace]-[number] for a column that covers a specific number of columns (e.g. 1-12 by default)
- * .off-[namespace]-[number] for pushing a col a specific number of columns (e.g. 1-11 by default)
- */
-/**
- * Build the grid in two steps, to help minimize file size
- * Step 1, for each namespace, create the grid-base
- * Step 2, for each namespace, wrap the col width/offset measurements in their breakpoint media query
- */
 .column-xs-1 {
   flex-basis: 8.33333%;
   max-width: 8.33333%; }

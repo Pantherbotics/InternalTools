@@ -5,3 +5,10 @@ Current list of tools:
  - Git sync scripts: Automatically updates local git cache with our github accounts
  - Internet scripts: Manages reconnect and reboot of our internet hardware
  - Internal tool scripts: manages semi-automatic updates of production scripts running on our server
+
+
+
+Design and Styles by the students of Newbury Park High School Robotics Club with assistance from Mentor Mr. Rice
+
+Copyright &copy; 2016. Pantherbotics, All Rights Reserved.
+

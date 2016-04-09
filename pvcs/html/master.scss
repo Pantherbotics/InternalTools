@@ -86,7 +86,6 @@ html, body {
 	}
 }
 
-
 p, .items {
 	font-size: 20px;
 }
@@ -112,19 +111,16 @@ p, .items {
 }
 
 #content {
-
     min-height: 100%;
-    /* equal to footer height */
+    width: 95%;
+    max-width: $max-width;
+    margin-right: auto;
+    margin-left: auto;
     margin-bottom: -50px; 
     &:after {
         content: "";
         display: block;
     }
-
-    width: 95%;
-    max-width: $max-width;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 .footer {
@@ -141,7 +137,7 @@ img {
 }   
 
 input[type="submit"] {
-	padding: 10px;
+	padding: 2px;
 	border-radius: 5px;
 	font-size: 1em;
 	&:hover {
@@ -150,7 +146,8 @@ input[type="submit"] {
 }
 
 input[type="text"] {
-	padding: 10px;
+	padding: 2px;
+    border-radius: 5px;
 	font-size: 1em;
 }
 
@@ -164,23 +161,6 @@ input[type="text"] {
 }
 
 
-
-/**
- * Break point namespace object
- *
- * Set the default namespace object with these defaults with the
- * understanding that you can pass in whatever you might require for your site.
- *
- * $fg-breakpoints is a Sass list with nested lists inside. Each sub list defines two things.
- * 1. The namespace for that breakpoint. (Required) (i.e. xs, sm, md, lg)
- * 2. The min-width measurement for the breakpoint for that namespace. (i.e. 48em, 62em, 75em)
- *
- * Note: These should be in the proper order (at least till libsass handles map keys properly).
- *
- * Note: If the measurement is left out then it will be skipped when generating
- * the grid and applied to global styles.
- *
- */
 $fg-breakpoints: (
   (xs),
   (sm, 768px),
@@ -188,23 +168,12 @@ $fg-breakpoints: (
   (lg, 1200px)
 ) !default;
 
-/**
- * Class Name Defaults
- *
- * Define class names for columns, rows and offsets in case compatibility with other
- * libraries is necessary.
-/**
- * Calculate column size percentage
- */
 @function get-col-percent($column-num) {
 
   @return $column-num / $fg-columns * 100%;
 
 }
 
-/**
- * Spacing mixin to create uniform margin/padding
- */
 @mixin spacing( $value, $type: margin, $orientation: vertical ) {
   @if $orientation == vertical {
     #{ $type }-top: $value;
@@ -215,9 +184,6 @@ $fg-breakpoints: (
   }
 }
 
-/**
- * Row wrapper class, flex box parent.
- */
 .#{ $fg-class-row } {
   box-sizing: border-box;
   display: flex;
@@ -244,13 +210,6 @@ $fg-breakpoints: (
 }
 
 
-/**
- * Generate a set of grid column classes using a namespace
- *
- * .#{ $fg-class-col }-[namespace] for intelligent column division
- * .#{ $fg-class-col }-[namespace]-[number] for a column that covers a specific number of columns (e.g. 1-12 by default)
- * .#{ $fg-class-off }-[namespace]-[number] for pushing a col a specific number of columns (e.g. 1-11 by default)
- */
 
 @mixin grid-base( $namespace ) {
   .#{ $fg-class-col }-#{$namespace} {
@@ -266,7 +225,6 @@ $fg-breakpoints: (
 
 @mixin grid-sizes( $namespace ) {
 
-  // Run the loop for as many columns as speficied
   @for $i from 1 through $fg-columns {
     .#{ $fg-class-col }-#{$namespace}-#{$i} {
       flex-basis: get-col-percent($i);
@@ -276,41 +234,27 @@ $fg-breakpoints: (
 
   @for $i from 1 through $fg-columns {
 
-    // Don't include the .off class for the last column
     @if ( $i != $fg-columns ) {
       .#{ $fg-class-off }-#{$namespace}-#{$i} {
         margin-left: get-col-percent($i);
       }
     }
-
   }
 
 }
 
-
-/**
- * Build the grid in two steps, to help minimize file size
- * Step 1, for each namespace, create the grid-base
- * Step 2, for each namespace, wrap the col width/offset measurements in their breakpoint media query
- */
 @each $val in $fg-breakpoints {
-
   $namespace: nth($val, 1);
   @include grid-base( $namespace );
-
 }
 
 @each $val in $fg-breakpoints {
   @if length($val) == 1 {
-
     $namespace: nth($val, 1);
     @include grid-sizes( $namespace );
-
   } @else {
-
     $namespace: nth($val, 1);
     $size: nth($val, 2);
-
     @media only screen and (min-width: #{$size}) {
       @include grid-sizes( $namespace );
     }

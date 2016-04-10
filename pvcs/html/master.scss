@@ -1,0 +1,262 @@
+/**
+ * Grid setup
+ *
+ * The grid will calculate dimensions based on these two variables:
+ * $fg-columns will inform the grid loops how many columns there should be.
+ * $fg-gutter will inform the grid loops how big eac column's gutters should be.
+ *
+ * The grid will name columns, rows, offsets based on these three variables:
+ * $fg-class-row string used for the row class
+ * $fg-class-col string used for the column class
+ * $fg-class-off string used for the offset class
+ */
+$fg-columns: 12 !default;
+$fg-gutter: 0.5rem !default;
+
+$fg-class-row: 'row' !default;
+$fg-class-col: 'column' !default;
+$fg-class-off: 'off' !default;
+
+
+
+$bg-color: #666666;
+$fg-color-0: #e5c100;
+
+$max-width: 90em;
+ 
+// breakpoints
+$breakpoint-small: "only screen and (min-width: 20em)";
+$breakpoint-medium: "only screen and (min-width: 30em)";
+
+@mixin border-box {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+
+%clearfix {
+    *zoom: 1;
+    &:before, &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+*, *:after, *:before {
+    margin: 0;
+    padding: 0;
+    @include border-box;
+}
+
+html, body {
+	background-color: $bg-color;
+	background: url('extra_clean_paper.png');
+	height: 100%;
+}
+
+.header {
+	text-align:center;
+
+	a {
+		text-decoration: none;
+		h1:hover {
+			color: darken($fg-color-0, 5%);
+		}
+	}
+
+	h1 {
+		color: $fg-color-0;
+		font-size: 4em;
+	}
+
+	h2 {
+		font-size: 2em;
+	}
+
+	.info {
+		&.info-top{
+			padding-top: 20px;
+		}
+		&.info-bottom{
+			padding-bottom: 60px;
+		}
+	}
+}
+
+p, .items {
+	font-size: 20px;
+}
+
+.outline > div {
+	border: 1px solid black;
+}
+
+.left{
+	text-align: left;
+}
+.center{
+	text-align: center;
+}
+.right{
+	text-align: right;
+}
+
+.items{ 
+	> div {
+		padding: 20px 20px;
+	}
+}
+
+#content {
+    min-height: 100%;
+    width: 95%;
+    max-width: $max-width;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: -50px; 
+    &:after {
+        content: "";
+        display: block;
+    }
+}
+
+.footer {
+	text-align:center;
+    #content:after {
+        height: 50px; 
+    }
+}
+
+img {
+    width: auto;
+    max-width: 100%;
+    height: auto !important; 
+}   
+
+input[type="submit"] {
+	padding: 2px;
+	border-radius: 5px;
+	font-size: 1em;
+	&:hover {
+		border-style: inset;
+	}
+}
+
+input[type="text"] {
+	padding: 2px;
+    border-radius: 5px;
+	font-size: 1em;
+}
+
+#repos {
+	&, td, th{
+		border:1px solid #000000;
+	    padding: 5px;
+	}
+	width: 100%;
+    border-collapse: collapse;
+}
+
+
+$fg-breakpoints: (
+  (xs),
+  (sm, 768px),
+  (md, 992px),
+  (lg, 1200px)
+) !default;
+
+@function get-col-percent($column-num) {
+
+  @return $column-num / $fg-columns * 100%;
+
+}
+
+@mixin spacing( $value, $type: margin, $orientation: vertical ) {
+  @if $orientation == vertical {
+    #{ $type }-top: $value;
+    #{ $type }-bottom: $value;
+  } @else {
+    #{ $type }-left: $value;
+    #{ $type }-right: $value;
+  }
+}
+
+.#{ $fg-class-row } {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  @include spacing( ( -$fg-gutter ), margin, horizontal );
+}
+
+
+%#{ $fg-class-col } {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  @include spacing( ( $fg-gutter ), padding, horizontal );
+}
+
+%#{ $fg-class-col }-flex {
+  @extend %#{ $fg-class-col };
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+
+
+@mixin grid-base( $namespace ) {
+  .#{ $fg-class-col }-#{$namespace} {
+    @extend %#{ $fg-class-col }-flex;
+  }
+
+  @for $i from 1 through $fg-columns {
+    .#{ $fg-class-col }-#{$namespace}-#{$i} {
+      @extend %#{ $fg-class-col };
+    }
+  }
+}
+
+@mixin grid-sizes( $namespace ) {
+
+  @for $i from 1 through $fg-columns {
+    .#{ $fg-class-col }-#{$namespace}-#{$i} {
+      flex-basis: get-col-percent($i);
+      max-width:  get-col-percent($i);
+    }
+  }
+
+  @for $i from 1 through $fg-columns {
+
+    @if ( $i != $fg-columns ) {
+      .#{ $fg-class-off }-#{$namespace}-#{$i} {
+        margin-left: get-col-percent($i);
+      }
+    }
+  }
+
+}
+
+@each $val in $fg-breakpoints {
+  $namespace: nth($val, 1);
+  @include grid-base( $namespace );
+}
+
+@each $val in $fg-breakpoints {
+  @if length($val) == 1 {
+    $namespace: nth($val, 1);
+    @include grid-sizes( $namespace );
+  } @else {
+    $namespace: nth($val, 1);
+    $size: nth($val, 2);
+    @media only screen and (min-width: #{$size}) {
+      @include grid-sizes( $namespace );
+    }
+  }
+}

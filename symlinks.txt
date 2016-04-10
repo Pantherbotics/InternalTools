@@ -6,4 +6,5 @@
 /robotics/services/InternalTools/scripts /robotics
 /robotics/services/InternalTools/pvcs /robotics/services
 /robotics/services/InternalTools/internalToolsScripts /robotics/services
+/robotics/services/InternalTools/scripts/monitor.sh /robotics/monitor.sh
 

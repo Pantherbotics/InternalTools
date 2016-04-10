@@ -23,7 +23,7 @@ function setRepos(arr) {
       
       
       var rowA = '<tr class="repo" id="'+index+'"><td>' +index+ "</td><td>" +arr[index]['path']+ "</td><td>";
-      var rowB =  arr[index]['state']+ '</td><td>'+arr[index]['date']+ '</td><td><a href="'+arr[index]['link']+'">'+arr[index]['link']+'</a></td></tr';
+      var rowB =  arr[index]['state']+ '</td><td>'+arr[index]['date']+ '</td><td><a href="ssh://'+arr[index]['link']+'">'+arr[index]['link']+'</a></td></tr';
       $("#repos tr:last").after(rowA+rowB);
     }
 }

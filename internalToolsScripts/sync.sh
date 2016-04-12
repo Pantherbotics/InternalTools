@@ -1,4 +1,4 @@
 #!/bin/bash
 cd /robotics/services/InternalTools
 git checkout production
-git pull origin develop
+git pull origin production

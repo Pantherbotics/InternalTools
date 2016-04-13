@@ -79,7 +79,7 @@ class monitor:
             c1 = self.drawGraph(23, self.cpuPercent[i+1])
             print '   C%s: %s %-5s%%  C%s: %s %-5s%%'%(i,c0,self.colP(self.cpuPercent[i]),i+1,c1,self.colP(self.cpuPercent[i+1]))
 
-        print '\n%sMemory:%s'%(co.BOLD,co.ENDC)
+        print '%sMemory:%s'%(co.BOLD,co.ENDC)
         r = self.drawGraph(23.0, self.ramInfo.percent)
         s = self.drawGraph(23.0, self.swapInfo.percent)
         print '   RAM %s %s%% SWAP %s %s%%'%(r,self.colP(self.ramInfo.percent),s,self.colP(self.swapInfo.percent))
@@ -89,9 +89,9 @@ class monitor:
             gr = self.drawGraph(62, info.percent)
             if mnt in DSKNAME.keys():n = DSKNAME[mnt]
             else: n = mnt
-            print '  %-4s %s %+4s%%\n'%(n,gr, self.colP(info.percent))
+            print '  %-4s %s %+4s%%'%(n,gr, self.colP(info.percent))
 
-        print '%sHARDWARE MONITORING:%s'%(co.BOLD,co.ENDC)
+        print '\n%sHARDWARE MONITORING:%s'%(co.BOLD,co.ENDC)
         print '  CPU: %-3sC Mobo: %-3sC GPU: %-3sC'%(self.colT(self.sensors[8]),self.colT(self.sensors[9]),self.colT(self.sensors[0]))
         print '  %sVcore:%s %-4sV  %s+3.3V_Rail:%s %-4sV  %s+5V_Rail:%s %-4sV  %s+12V_Rail:%s %-4sV '%(co.BOLD,co.ENDC,self.sensors[1],co.BOLD,co.ENDC,self.sensors[2],co.BOLD,co.ENDC,self.sensors[3],co.BOLD,co.ENDC,self.sensors[4])
         k = self.hdd.keys()

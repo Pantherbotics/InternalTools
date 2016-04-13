@@ -12,7 +12,7 @@ tmux split-window -hp 50
 tmux send-keys "tty-clock -tscC 7" C-m
 tmux select-pane -t 0
 tmux split-window -vp 77
-tmux send-keys "speedometer -r enp0s25 -t enp0s25 -s" C-m
+tmux send-keys "speedometer -r enp0s10 -t enp0s10 -s" C-m
 tmux select-pane -t 2
 tmux split-window -vp 77
 tmux send-keys "python /robotics/scripts/display.py" C-m

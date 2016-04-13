@@ -92,11 +92,11 @@ class monitor:
             print '  %-4s %s %+4s%%\n'%(n,gr, self.colP(info.percent))
 
         print '%sHARDWARE MONITORING:%s'%(co.BOLD,co.ENDC)
-        print '  Graphics Temp: -null-     CPU Temp: %-3sC %-3sC'%(self.colT(self.sensors[0]),self.colT(self.sensors[1]))
-        k = self.hdd.keys()
-        k.sort()
-        for key in k:
-            print '  %s%sC'%(key, self.colT(self.hdd[key])),
+        #print '  Graphics Temp: -null-     CPU Temp: %-3sC %-3sC'%(self.colT(self.sensors[0]),self.colT(self.sensors[1]))
+       # k = self.hdd.keys()
+       # k.sort()
+       # for key in k:
+       #     print '  %s%sC'%(key, self.colT(self.hdd[key])),
 
         print '\n\n%sRAID ARRAYS:%s'%(co.BOLD,co.ENDC)
         for key, dat in self.raid.iteritems():
